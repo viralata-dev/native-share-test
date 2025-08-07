@@ -1,31 +1,38 @@
 import { Button, Group, Tooltip } from "@mantine/core";
 import { useLayoutEffect, useState } from "react";
 
+const CAT_IMAGE_URL =
+	"https://placeholdr.ai/2e17c53f-b4d5-4af5-a772-6b3c6cfab942/256/256";
+
 export function CatActions() {
 	const [disabled, setDisabled] = useState(false);
+
 	const handleDownload = () => {
-		const imageUrl =
-			"https://placeholdr.ai/bc52482f-bb62-489d-b7ff-a9847f8ebe51/256/256";
-		const a = document.createElement("a");
-		a.href = imageUrl;
-		a.download = "cat.jpg";
-		a.click();
+		fetch(CAT_IMAGE_URL)
+			.then((res) => res.blob())
+			.then((blob) => {
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement("a");
+				a.href = url;
+				a.download = "cat.jpg";
+				a.click();
+			});
 	};
-	const handleShare = async () => {
-		const imageUrl =
-			"https://placeholdr.ai/bc52482f-bb62-489d-b7ff-a9847f8ebe51/256/256";
-		// convert image to blob
-		const imageBlob = await fetch(imageUrl).then((res) => res.blob());
 
-		const imageFile = new File([imageBlob], "cat.jpg", {
-			type: "image/jpeg",
-		});
+	const handleShare = () => {
+		fetch(CAT_IMAGE_URL)
+			.then((res) => res.blob())
+			.then((blob) => {
+				const imageFile = new File([blob], "cat.jpg", {
+					type: "image/jpeg",
+				});
 
-		navigator.share({
-			title: "Cat image",
-			text: "Check out this cat image",
-			files: [imageFile],
-		});
+				navigator.share({
+					title: "Cat image",
+					text: "Check out this cat image",
+					files: [imageFile],
+				});
+			});
 	};
 
 	useLayoutEffect(() => {
