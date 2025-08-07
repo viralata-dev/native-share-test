@@ -1,11 +1,13 @@
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
+import { CatActions } from "@/components/CatActions";
+import { ColorSchemeToggle } from "../components/ColorSchemeToggle/ColorSchemeToggle";
+import { Welcome } from "../components/Welcome/Welcome";
 
 export function HomePage() {
-  return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
-  );
+	return (
+		<>
+			<ColorSchemeToggle />
+			<Welcome />
+			<CatActions />
+		</>
+	);
 }
