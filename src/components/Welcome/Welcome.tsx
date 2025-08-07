@@ -3,7 +3,7 @@ import classes from "./Welcome.module.css";
 
 export function Welcome() {
 	return (
-		<Title className={classes.title} ta="center" mt={100}>
+		<Title className={classes.title} ta="center" mt={48}>
 			Testing{" "}
 			<Text
 				inherit

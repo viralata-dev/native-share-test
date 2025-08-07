@@ -1,4 +1,4 @@
-import { Button, Group, Tooltip } from "@mantine/core";
+import { Button, Group, Stack, Text } from "@mantine/core";
 import { useLayoutEffect, useState } from "react";
 
 const CAT_IMAGE_URL =
@@ -42,7 +42,7 @@ export function CatActions() {
 	}, []);
 
 	return (
-		<Group justify="center" mt="xl">
+		<Group justify="center" align="start" mt="xl">
 			<Button
 				type="button"
 				onClick={handleDownload}
@@ -52,27 +52,20 @@ export function CatActions() {
 			>
 				Download a cat image
 			</Button>
-			{disabled ? (
-				<Tooltip label="Your browser does not support the Web Share API">
-					<Button
-						type="button"
-						onClick={handleShare}
-						disabled={disabled}
-						size="xl"
-					>
-						Share a cat image
-					</Button>
-				</Tooltip>
-			) : (
+			<Stack>
 				<Button
 					type="button"
+					variant="outline"
 					onClick={handleShare}
 					disabled={disabled}
 					size="xl"
 				>
 					Share a cat image
 				</Button>
-			)}
+				<Text size="xs" c="dimmed" ta="center">
+					{disabled ? "Your browser does not support the Web Share API" : ""}
+				</Text>
+			</Stack>
 		</Group>
 	);
 }
