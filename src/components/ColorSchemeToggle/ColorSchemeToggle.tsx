@@ -4,25 +4,19 @@ import {
 	type MantineColorScheme,
 	useMantineColorScheme,
 } from "@mantine/core";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 export function ColorSchemeToggle() {
-	const { setColorScheme, colorScheme } = useMantineColorScheme();
+	const { setColorScheme } = useMantineColorScheme();
 
-	useLayoutEffect(() => {
-		// get from local storage
-		const savedColorScheme = localStorage.getItem("colorScheme");
-		if (savedColorScheme) {
-			setColorScheme(savedColorScheme as MantineColorScheme);
+	useEffect(() => {
+		const localColorScheme = localStorage.getItem("colorScheme");
+		if (localColorScheme) {
+			setColorScheme(localColorScheme as MantineColorScheme);
 			return;
 		}
 		setColorScheme("auto");
 	}, [setColorScheme]);
-
-	useEffect(() => {
-		// save to local storage
-		localStorage.setItem("colorScheme", colorScheme);
-	}, [colorScheme]);
 
 	return (
 		<Group justify="end" mt="xl" w="100%" px="xl">
