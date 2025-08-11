@@ -1,13 +1,14 @@
-import { CatActions } from "@/components/CatActions";
-import { ColorSchemeToggle } from "../components/ColorSchemeToggle/ColorSchemeToggle";
-import { Welcome } from "../components/Welcome/Welcome";
+import { CatActions, ColorSchemeToggle, Welcome } from '~components';
+import { Box, Stack } from '@mantine/core';
 
 export function HomePage() {
-	return (
-		<>
-			<ColorSchemeToggle />
-			<Welcome />
-			<CatActions />
-		</>
-	);
+  return (
+    <Box>
+      <ColorSchemeToggle />
+      <Stack gap="xl">
+        <Welcome />
+        <CatActions />
+      </Stack>
+    </Box>
+  );
 }

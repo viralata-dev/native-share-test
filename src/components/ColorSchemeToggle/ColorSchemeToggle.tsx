@@ -19,7 +19,7 @@ export function ColorSchemeToggle() {
 	}, [setColorScheme]);
 
 	return (
-		<Group justify="end" mt="xl" w="100%" px="xl">
+		<Group justify="end" mt="xl" w="100%" px="xl" mb={48}>
 			<Button
 				variant="gradient"
 				gradient={{

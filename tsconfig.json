@@ -17,8 +17,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./src/*"],
-      "@test-utils": ["./test-utils"]
+      "~/*": ["./src/*"],
+      "~components": ["./src/components/index.tsx"],           
+      "~test-utils": ["./test-utils"]
     }
   },
   "include": ["src", "test-utils"]
